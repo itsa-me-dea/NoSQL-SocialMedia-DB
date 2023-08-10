@@ -3,13 +3,31 @@ const { Schema, model } = require('mongoose');
 // Schema to create User model
 const userSchema = new Schema(
   {
-    first: String,
-    last: String,
-    age: Number,
-    applications: [
+    username: { 
+      type: String, 
+      unique: true,
+      required: true,
+      // https://mongoosejs.com/docs/api/schemastring.html#SchemaString.prototype.trim()
+      trim: true 
+    },
+    email: { 
+      type: String, 
+      unique: true,
+      required: true,
+      // match validator for email regex
+      // https://mongoosejs.com/docs/api/schemastring.html#SchemaString.prototype.match()
+      match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/, "Please enter a valid email."]
+    },
+    thoughts: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Application',
+        ref: 'Thought',
+      },
+    ],
+    friends: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
       },
     ],
   },
@@ -23,21 +41,15 @@ const userSchema = new Schema(
   }
 );
 
-// Create a virtual property `fullName` that gets and sets the user's full name
+// Create a virtual property `friendCount` that gets user's # of friends
 userSchema
-  .virtual('fullName')
+  .virtual('friendCount')
   // Getter
   .get(function () {
-    return `${this.first} ${this.last}`;
-  })
-  // Setter to set the first and last name
-  .set(function (v) {
-    const first = v.split(' ')[0];
-    const last = v.split(' ')[1];
-    this.set({ first, last });
+    return `Total Friends: ${this.friends.length}`;
   });
 
-// Initialize our User model
+// Initialize User model
 const User = model('user', userSchema);
 
 module.exports = User;
