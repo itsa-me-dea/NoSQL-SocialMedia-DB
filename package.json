@@ -1,5 +1,5 @@
 {
-  "name": "NoSQL-SocialMedia-DB",
+  "name": "nosql-social-media-db",
   "version": "1.0.0",
   "description": "API for a social network web application using NoSQL, MongoDB and Mongoose",
   "main": "index.js",
