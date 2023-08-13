@@ -18,7 +18,7 @@ const thoughtSchema = new Schema(
       default: Date.now,
       // Convert date with day.js
       get: function() {
-        return dayjs(this.dateField).format('DD MMM YYYY HH:mm');
+        return dayjs(this.dateField).format('MMM DD, YYYY @ HH:mm');
       }, 
     },
     // User who created this thought
@@ -32,6 +32,7 @@ const thoughtSchema = new Schema(
     // Allow for reactionCount virtual
     toJSON: {
       virtuals: true,
+      getters: true,
     },
     id: false,
   }

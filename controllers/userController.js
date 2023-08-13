@@ -31,13 +31,13 @@ module.exports = {
       const user = await User.create(req.body);
       res.json(user);
     } catch (err) {
-      res.status(500).json(err);
+      res.status(500).json(`${req.body.username} is already taken!`);
     }
   },
   // update user info
   async updateUser(req, res) {
     try {
-      const user = await user.findOneAndUpdate(
+      const user = await User.findOneAndUpdate(
         { _id: req.params.userId },
         { $set: req.body },
         { runValidators: true, new: true }
@@ -46,8 +46,8 @@ module.exports = {
       if (!user) {
         return res.status(404).json({ message: 'No user with that ID!' });
       }
-
-      res.json(user);
+      
+      res.json({ message: 'Updated user info 🎉', user });
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -57,8 +57,8 @@ module.exports = {
   async addFriend(req, res) {
     try {
       const user = await User.findOneAndUpdate(
-        { _id: req.body.userId },
-        { $addToSet: { friends: req.body.friendId } },
+        { _id: req.params.userId },
+        { $addToSet: { friends: req.params.friendId } },
         { new: true }
       );
 
@@ -92,17 +92,15 @@ module.exports = {
   // delete friend by friendId
   async removeFriend(req, res) {
     try {
-      // not sure if this'll work, check here first for debugging
       const friend = await User.findOne({ _id: req.params.friendId });
 
       if (!friend) {
         return res.status(404).json({ message: 'No friend with this ID!' });
       }
-      // to here
 
       const user = await User.findOneAndUpdate(
-        { friends: req.body.friendId },
-        { $pull: { friends: req.body.friendId } },
+        { _id: req.params.userId },
+        { $pull: { friends: req.params.friendId } },
         { new: true }
       );
 
@@ -112,9 +110,9 @@ module.exports = {
         });
       }
 
-      res.json({ message: 'Friend successfully deleted!' });
+      res.json('Friend successfully deleted!');
     } catch (err) {
-      res.status(500).json(err);
+      res.status(500).json({ message: 'No friend with this ID', err });
     }
   },
 };

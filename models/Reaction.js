@@ -21,7 +21,7 @@ const reactionSchema = new Schema(
       type: Date,
       default: Date.now,
       get: function() {
-        return dayjs(this.dateField).format('DD MMM YYYY HH:mm');
+        return dayjs(this.dateField).format('MMM DD, YYYY @ HH:mm');
       }, 
     },
   },
