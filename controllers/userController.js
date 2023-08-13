@@ -34,7 +34,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // update user using the findOneAndUpdate method
+  // update user info
   async updateUser(req, res) {
     try {
       const user = await user.findOneAndUpdate(
@@ -89,8 +89,8 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // delete friends
-  async deleteFriend(req, res) {
+  // delete friend by friendId
+  async removeFriend(req, res) {
     try {
       // not sure if this'll work, check here first for debugging
       const friend = await User.findOne({ _id: req.params.friendId });
