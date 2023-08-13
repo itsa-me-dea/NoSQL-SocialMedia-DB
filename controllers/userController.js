@@ -17,7 +17,7 @@ module.exports = {
         .select('-__v');
 
       if (!user) {
-        return res.status(404).json({ message: 'No user with that ID' });
+        return res.status(404).json({ message: 'No user with that ID!' });
       }
 
       res.json(user);
@@ -44,7 +44,7 @@ module.exports = {
       );
 
       if (!user) {
-        return res.status(404).json({ message: 'No user with this id!' });
+        return res.status(404).json({ message: 'No user with that ID!' });
       }
 
       res.json(user);
@@ -64,7 +64,7 @@ module.exports = {
 
       if (!user) {
         return res.status(404).json({
-          message: 'Friend added, but found no user with that ID',
+          message: 'No user with that ID!',
         })
       }
 
@@ -80,7 +80,7 @@ module.exports = {
       const user = await User.findOneAndDelete({ _id: req.params.userId });
 
       if (!user) {
-        return res.status(404).json({ message: 'No user with that ID' });
+        return res.status(404).json({ message: 'No user with that ID!' });
       }
 
       await Thought.deleteMany({ _id: { $in: user.thoughts } });
@@ -89,27 +89,30 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+  // delete friends
   async deleteFriend(req, res) {
     try {
-      const application = await Application.findOneAndRemove({ _id: req.params.applicationId });
+      // not sure if this'll work, check here first for debugging
+      const friend = await User.findOne({ _id: req.params.friendId });
 
-      if (!application) {
-        return res.status(404).json({ message: 'No application with this id!' });
+      if (!friend) {
+        return res.status(404).json({ message: 'No friend with this ID!' });
       }
+      // to here
 
       const user = await User.findOneAndUpdate(
-        { applications: req.params.applicationId },
-        { $pull: { applications: req.params.applicationId } },
+        { friends: req.body.friendId },
+        { $pull: { friends: req.body.friendId } },
         { new: true }
       );
 
       if (!user) {
         return res.status(404).json({
-          message: 'Application created but no user with this id!',
+          message: 'No user with that ID!',
         });
       }
 
-      res.json({ message: 'Application successfully deleted!' });
+      res.json({ message: 'Friend successfully deleted!' });
     } catch (err) {
       res.status(500).json(err);
     }
