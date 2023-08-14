@@ -95,6 +95,12 @@ module.exports = {
         return res.status(404).json({ message: 'No user with that ID!' });
       }
 
+      // deletes user from friends list
+      await User.updateMany(
+        { friends: user._id },
+        { $pull: { friends: user._id } }
+      );
+
       // deletes any thoughts associate with user
       await Thought.deleteMany({ username: user.username });
       // sends message if successful else presents error
