@@ -1,4 +1,6 @@
 const { Schema, model } = require('mongoose');
+// used to validate if unique =  true, else presents error
+var uniqueValidator = require('mongoose-unique-validator');
 
 // Schema to create User model
 const userSchema = new Schema(
@@ -8,7 +10,7 @@ const userSchema = new Schema(
       unique: true,
       required: true,
       // https://mongoosejs.com/docs/api/schemastring.html#SchemaString.prototype.trim()
-      trim: true 
+      trim: true, 
     },
     email: { 
       type: String, 
@@ -47,6 +49,9 @@ userSchema
   .get(function () {
     return `Total Friends: ${this.friends.length}`;
   });
+
+// validator to ensure unique username
+userSchema.plugin(uniqueValidator);
 
 // Initialize User model
 const User = model('user', userSchema);

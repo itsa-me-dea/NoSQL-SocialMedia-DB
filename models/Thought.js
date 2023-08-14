@@ -26,6 +26,11 @@ const thoughtSchema = new Schema(
       type: String, 
       required: true,
     },
+    // associated users id (needed in case of any updates to user)
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User', // Reference to the User model
+      },
     reactions: [Reaction],
   },
   {
