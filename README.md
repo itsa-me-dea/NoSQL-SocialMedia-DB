@@ -3,60 +3,73 @@
 [![License Badge](https://img.shields.io/badge/license-MIT%20License-green?style=for-the-badge&logo=appveyor)](https://mit-license.org/)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg?style=for-the-badge&logo=appveyor)](https://www.contributor-covenant.org/version/2/1/code_of_conduct/)
 
-### **[Description](#description) | [Installation](#installation) | [Usage](#usage) | [Credits](#credits) | [License](#license) | [Contribute](#contribute) | [Tests](#tests) | [Questions](#questions)**
+### **[Description](#description) | [Installation](#installation) | [Usage](#usage) | [Credits](#credits) | [License](#license) | [Contribute](#contribute) | [Questions](#questions)**
 
 ## Description
 
-<!-- My motivation was to build the back end for an e-commerce site that creates and holds a database for retailers to utilize as a site for internet retailing / e-commerce. 
+My motivation was to build the back end for an social media site that creates and holds a database for `Users` and posts (aka `Thoughts`). There is meant to be interactability between users in forms of `friends` and `reactions` to user posts.
 
-This creates a site that utilizes back-end features by configuring Express.js API to use Sequelize and interact with a MySQL database. ANd from this project, I learned how to utilize Sequelize and MySQL. -->
+This creates a site that utilizes back-end features by configuring Express.js API to use Mongoose and interact with a NoSQL database. I learned a great deal on how work with json, Isomnia, NoSQL, and Mongoose. Additionally, I found these options to be better alternative to NoSQL and Sequalize. I learned to utilize CRUD methods, virtuals, getters and even got more familiar with using NPM.
 
 ## Installation
 
-<!-- Starting the Server:
-1. Open a terminal with `server.js`
-2. In the terminal, enter `npm install`
-3. Update your `.env`
-4. In the terminal, enter `mysql -u root -p` and complete
-5. Enter `SOURCE db\schema.sql` and `exit`
-6. Enter `npm run seed`
-7. Enter `npm run start`
-8. Open http://localhost:3001/ in Insomnia or related app -->
+Starting the Server:
+1. Fork or download repository
+2. Open a terminal with `index.js`
+3. In the terminal, enter `npm i`
+4. Enter `npm run start`
+5. Open http://localhost:3001/api/ in Insomnia (see [routes folder](./routes/api/) for specific routes)
 
 ## Usage
 
-<!-- This project will not be deployed. Refer to the following gifs and associated [tutorial video file](./Assets/screen-capture-e-commerce-sequelize-backend.mp4) or [tutorial video link](https://drive.google.com/file/d/1kvk2-O5uZL9tUcgrwuLZJ9Goe1v-iNWA/view?usp=sharing).
+This project will not be deployed. Refer to the following images and associated [tutorial video file](./Assets/screen-capture-NoSQLSocialMediaDB-v2.mp4) or [tutorial video link](https://drive.google.com/file/d/1QxOnj9Ke32W6slyycdSfq5OkN-C1-Z72/view?usp=sharing). 
 
-**NOTE:** The POST and DELETE requests will show as 0 or 1, indicating that the POST either failed or successfully updated, respectively. 
+To see the full application working, refer to the video links provided [above](#usage). The following images demonstrate:
+- GET routes for all users and all thoughts being tested in Insomnia.
+- GET routes for a single user and a single thought being tested in Insomnia.
+- POST, PUT, and DELETE routes for users and thoughts being tested in Insomnia.
+- POST and DELETE routes for a user’s friend list being tested in Insomnia.
+- POST and DELETE routes for reactions to thoughts being tested in Insomnia.
 
-The following animation shows the application's GET, POST, PUT, DELETE routes for categories tested in Insomnia:
+> **NOTE:** These images are taken after the changes were made (see video).
 
-![Categories GET, POST, PUT, DELETE routes test in Insomnia.](./Assets/demo-CATEGORIES.gif)
-
-The following animation shows the application's GET, POST, PUT, DELETE routes for tags tested in Insomnia:
-
-![Tags GET, POST, PUT, DELETE routes test in Insomnia.](./Assets/demo-TAGS.gif)
-
-The following animation shows the application's GET, POST, PUT, DELETE routes for products tested in Insomnia:
-
-![Products GET, POST, PUT, DELETE routes test in Insomnia.](./Assets/demo-PRODUCTS.gif) -->
+<div style="overflow-x: scroll; white-space: nowrap;">
+  <img src="./Assets/my-work-pics/mywork_addUser.png" alt="POST Users" style="display: inline-block; width: auto; height: auto; margin-right: 10px;">
+  <img src="./Assets/my-work-pics/mywork_allUsers.png" alt="GET All Users" style="display: inline-block; width: auto; height: auto; margin-right: 10px;">
+  <img src="./Assets/my-work-pics/mywork_userId.png" alt="GET User by ID" style="display: inline-block; width: auto; height: auto; margin-right: 10px;">
+  <img src="./Assets/my-work-pics/mywork_addFriend.png" alt="POST Friend" style="display: inline-block; width: auto; height: auto; margin-right: 10px;">
+  <img src="./Assets/my-work-pics/mywork_addThought.png" alt="POST Thought" style="display: inline-block; width: auto; height: auto; margin-right: 10px;">
+  <img src="./Assets/my-work-pics/mywork_allThoughts.png" alt="GET All Thoughts" style="display: inline-block; width: auto; height: auto; margin-right: 10px;">
+  <img src="./Assets/my-work-pics/mywork_thoughtId.png" alt="GET Thought by ID" style="display: inline-block; width: auto; height: auto; margin-right: 10px;">
+  <img src="./Assets/my-work-pics/mywork_updateThought.png" alt="PUT Thought Update" style="display: inline-block; width: auto; height: auto; margin-right: 10px;">
+  <img src="./Assets/my-work-pics/mywork_deleteThought.png" alt="DELETE Thought" style="display: inline-block; width: auto; height: auto; margin-right: 10px;">
+  <img src="./Assets/my-work-pics/mywork_addRxn.png" alt="POST Reaction" style="display: inline-block; width: auto; height: auto; margin-right: 10px;">
+  <img src="./Assets/my-work-pics/mywork_deleteRxn.png" alt="DELETE Reaction" style="display: inline-block; width: auto; height: auto; margin-right: 10px;">
+  <img src="./Assets/my-work-pics/mywork_updateUser.png" alt="PUT User Update" style="display: inline-block; width: auto; height: auto; margin-right: 10px;">
+  <img src="./Assets/my-work-pics/mywork_deleteFriend.png" alt="DELETE Friend" style="display: inline-block; width: auto; height: auto; margin-right: 10px;">
+  <img src="./Assets/my-work-pics/mywork_deleteUser.png" alt="DELETE User" style="display: inline-block; width: auto; height: auto; margin-right: 10px;">
+</div>
 
 ## Credits
 
-<!-- - Collaborators: 
+- Collaborators: 
   - N/A.
 - Third-party assets: 
   - https://expressjs.com/
-  - https://sequelize.org/
-  - https://www.mysql.com/
+  - https://day.js.org/
+  - https://mongoosejs.com/
+  - https://www.npmjs.com/package/mongoose-unique-validator
 - Tutorials: 
   - UCSD-VIRT-FSF-PT-03-2023-U-LOLC
-  - https://medium.com/@sarahdherr/sequelizes-update-method-example-included-39dfed6821d
-  - https://stackoverflow.com/questions/68926254/sequelize-using-where-in-include-in-findbypk
-  - https://stackoverflow.com/questions/69836342/how-to-use-both-include-and-attributes-in-findbypk-statement-in-sequelize
-  - https://stackoverflow.com/questions/50354817/sequelize-decimal-data-save-with-2-decimal-points -->
-
-
+  - https://stackoverflow.com/questions/18022365/mongoose-validate-email-syntax
+  - https://stackoverflow.com/questions/67680295/node-js-mongoose-findone-id-req-params-id-doesnt-work
+  - https://stackoverflow.com/questions/69574924/express-custom-json-response
+  - https://stackoverflow.com/questions/23502367/getter-and-setter-methods-in-model-class
+  - https://stackoverflow.com/questions/54992810/update-many-in-mongoose
+  - https://chat.openai.com/share/d53b354a-e690-47fb-a59b-6f4e303ee204
+  - https://chanwingkeihaha.medium.com/do-you-know-the-unique-option-is-not-a-validator-in-mongoose-85267fb1a085
+  - https://stackoverflow.com/questions/33627238/mongoose-find-with-multiple-conditions
+  - https://masteringjs.io/tutorials/mongoose/updatemany
 
 ## License
 
