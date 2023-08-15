@@ -31,9 +31,10 @@ To see the full application working, refer to the video links provided [above](#
 - POST and DELETE routes for a user’s friend list being tested in Insomnia.
 - POST and DELETE routes for reactions to thoughts being tested in Insomnia.
 
-> **NOTE:** These images are taken after the changes were made (see video).
+> **NOTE:** These images are taken after the changes were made (see video). And to consolidate, all images are displayed within the dropdown below.
 
-<div style="overflow-x: scroll; white-space: nowrap;">
+<details>
+  <summary>Insomnia CRUD Images</summary>
   <img src="./Assets/my-work-pics/mywork_addUser.png" alt="POST Users" style="display: inline-block; width: auto; height: auto; margin-right: 10px;">
   <img src="./Assets/my-work-pics/mywork_allUsers.png" alt="GET All Users" style="display: inline-block; width: auto; height: auto; margin-right: 10px;">
   <img src="./Assets/my-work-pics/mywork_userId.png" alt="GET User by ID" style="display: inline-block; width: auto; height: auto; margin-right: 10px;">
@@ -48,7 +49,7 @@ To see the full application working, refer to the video links provided [above](#
   <img src="./Assets/my-work-pics/mywork_updateUser.png" alt="PUT User Update" style="display: inline-block; width: auto; height: auto; margin-right: 10px;">
   <img src="./Assets/my-work-pics/mywork_deleteFriend.png" alt="DELETE Friend" style="display: inline-block; width: auto; height: auto; margin-right: 10px;">
   <img src="./Assets/my-work-pics/mywork_deleteUser.png" alt="DELETE User" style="display: inline-block; width: auto; height: auto; margin-right: 10px;">
-</div>
+</details>
 
 ## Credits
 
